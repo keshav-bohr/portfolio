@@ -9,7 +9,7 @@ export function Footer() {
           © {year} {personal.name}. Built with React, TypeScript & Tailwind.
         </p>
         <p className="font-display italic text-paper/70">
-          Designed & engineered in {personal.location}.
+          Designed & engineered using Claude.
         </p>
       </div>
     </footer>
