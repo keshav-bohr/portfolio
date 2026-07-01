@@ -2,24 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "motion/react";
 
 /**
- * A pointer that rides down a wavy vertical track pinned to the left edge as you
- * scroll the page. The track is a single static SVG path; the dot is moved along
- * it with getPointAtLength() only on scroll change (no per-frame rebuilds), so it
- * costs next to nothing. Progress maps to the whole document's scroll.
+ * A pointer that rides down a straight vertical track pinned to the left edge as
+ * you scroll the page. The track is a single static SVG path; the dot is moved
+ * along it with getPointAtLength() only on scroll change (no per-frame rebuilds),
+ * so it costs next to nothing. Progress maps to the whole document's scroll.
  */
 const W = 44;
 const MIDX = W / 2;
-const AMP = 12;
-const WAVELENGTH = 220; // px of viewport per full wave
 
-function wavePath(h: number) {
-  const freq = (Math.PI * 2) / WAVELENGTH;
-  let d = "";
-  for (let y = 0; y <= h; y += 6) {
-    const x = MIDX + Math.sin(y * freq) * AMP;
-    d += `${y === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)} `;
-  }
-  return d.trim();
+function linePath(h: number) {
+  return `M${MIDX} 0 L${MIDX} ${h}`;
 }
 
 export function ScrollTracer() {
@@ -65,7 +57,7 @@ export function ScrollTracer() {
       <svg width={W} height={h} viewBox={`0 0 ${W} ${h}`} fill="none">
         <path
           ref={pathRef}
-          d={wavePath(h)}
+          d={linePath(h)}
           stroke="var(--color-accent)"
           strokeOpacity={0.16}
           strokeWidth={1.5}
