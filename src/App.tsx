@@ -1,6 +1,6 @@
 import { useLenis } from "@/hooks/useLenis";
 import { Cursor } from "@/components/ui/Cursor";
-import { WaveField } from "@/components/ui/WaveField";
+import { ScrollTracer } from "@/components/ui/ScrollTracer";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <div className="grain relative">
-      <WaveField />
+      <ScrollTracer />
       <Cursor />
       <Nav />
       <main>
