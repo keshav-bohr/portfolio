@@ -8,7 +8,9 @@ import { useScroll, useMotionValueEvent } from "motion/react";
  * so it costs next to nothing. Progress maps to the whole document's scroll.
  */
 const W = 44;
-const MIDX = W / 2;
+// Seat the track near the right edge (leaving room for the 9px glow) so it
+// reads as an edge-hugging custom scrollbar rather than a centered rail.
+const MIDX = W - 12;
 
 function linePath(h: number) {
   return `M${MIDX} 0 L${MIDX} ${h}`;
@@ -52,7 +54,7 @@ export function ScrollTracer() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-30 h-screen"
+      className="pointer-events-none fixed right-0 top-0 z-30 h-screen"
     >
       <svg width={W} height={h} viewBox={`0 0 ${W} ${h}`} fill="none">
         <path

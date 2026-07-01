@@ -68,6 +68,19 @@
     overflow-x: hidden;
   }
 
+  /* Hide the native scrollbar — the ScrollTracer pinned to the right edge
+     stands in as a custom scroll indicator. Scrolling stays fully functional. */
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge/IE */
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none; /* WebKit/Blink */
+  }
+
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-paper);
