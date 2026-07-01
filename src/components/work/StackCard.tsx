@@ -25,7 +25,15 @@ export function StackCard({ project, index, total, progress, onOpen }: Props) {
   return (
     <div className="sticky top-0 flex h-screen items-center justify-center">
       <motion.div
-        style={{ scale, top: index * 16 }}
+        style={{
+          scale,
+          top: index * 16,
+          // Promote to a GPU layer so the card's gradients rasterise once and
+          // the compositor just scales the cached texture on scroll — otherwise
+          // the browser re-paints the radial gradients every frame (the lag).
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+        }}
         className="relative w-full max-w-[1040px]"
       >
         <motion.article
