@@ -18,8 +18,8 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Work />
         <About />
+        <Work />
         <Contact />
       </main>
       <Footer />
