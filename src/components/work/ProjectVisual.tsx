@@ -68,7 +68,7 @@ export function ProjectVisual({
         className={`pointer-events-none absolute bottom-4 right-5 font-display text-[5rem] font-light leading-none sm:text-[7rem] ${
           light ? "" : "text-paper/15"
         }`}
-        style={light ? { color: `${a}cc` } : undefined}
+        style={light ? { color: `${a}24` } : undefined}
       >
         {folio}
       </span>
