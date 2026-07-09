@@ -124,15 +124,22 @@
     font-optical-sizing: auto;
   }
 
-  /* Paper grain — subtle organic texture overlay */
+  /* Paper grain — subtle organic texture overlay.
+     `absolute` (not `fixed`) so the noise film scrolls with the page: a fixed
+     translucent full-viewport layer forces WebKit to re-blend the whole screen
+     every scroll frame, which scales with pixel count and janks large Retina
+     monitors. A small fixed tile size rasterises the feTurbulence noise once and
+     repeats it, instead of painting one giant backing store. */
   .grain::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 60;
     pointer-events: none;
     opacity: 0.045;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    background-repeat: repeat;
   }
 
   .text-balance {
