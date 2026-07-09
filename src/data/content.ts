@@ -9,7 +9,7 @@ export const personal = {
   role: "Senior Full Stack AI Engineer",
   location: "Pune, India",
   email: "keshav2016@gmail.com",
-  linkedin: "https://www.linkedin.com/in/keshav-bohra-17032753/",
+  linkedin: "https://www.linkedin.com/in/keshav-bohr/",
   github: "https://github.com/keshav-bohr", 
   availability: "Open to senior & staff engineering roles",
   yearsExperience: 8,
